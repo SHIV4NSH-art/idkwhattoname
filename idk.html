@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For the Legends</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #f6d365, #fda085);
+  color: #333;
+}
+
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  margin-bottom: 30px;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+.question {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.gif {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.gif img {
+  max-width: 200px;
+}
+
+.buttons {
+  text-align: center;
+}
+
+button {
+  padding: 12px 28px;
+  margin: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+.yes {
+  background: #00b09b;
+  color: white;
+}
+
+.no {
+  background: #ff5f6d;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.spotify {
+  text-align: center;
+}
+
+.spotify a {
+  display: inline-block;
+  background: #1DB954;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  color: #555;
+  font-size: 0.9em;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- Q1 -->
+  <div class="card" id="q1">
+    <div class="gif">
+      <img src="https://media.giphy.com/media/26tPoyDhjiJ2g7rEs/giphy.gif">
+    </div>
+    <div class="question">Are you bored right now?</div>
+    <div class="buttons">
+      <button class="yes" onclick="next('q1','q2')">Obviously</button>
+      <button class="no">Nope</button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card hidden" id="q2">
+    <div class="gif">
+      <img src="https://media.giphy.com/media/l3q2K5jinAlChoCLS/giphy.gif">
+    </div>
+    <div class="question">Do you agree our group is chaotic but legendary?</div>
+    <div class="buttons">
+      <button class="yes" onclick="next('q2','q3')">100%</button>
+      <button class="no">Still yes</button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="card hidden" id="q3">
+    <div class="gif">
+      <img src="https://media.giphy.com/media/3ohs7KViF6rA4aan5u/giphy.gif">
+    </div>
+    <div class="question">Ready to see some evidence?</div>
+    <div class="buttons">
+      <button class="yes" onclick="next('q3','final')">Show me</button>
+      <button class="no">Also show me</button>
+    </div>
+  </div>
+
+  <!-- FINAL -->
+  <div class="card hidden" id="final">
+    <h1>The Legends 🫡</h1>
+    <p style="text-align:center;">
+      If you reached here, congratulations.  
+      You are officially part of the most unproductive,
+      loud, funny, and unbeatable friend group.
+    </p>
+    <p style="text-align:center;">
+      No context photos.  
+      No explanations.  
+      Just vibes.
+    </p>
+  </div>
+
+  <!-- PHOTOS -->
+  <div class="card hidden" id="photos">
+    <h2>Photo Proof 📸</h2>
+
+    <h3>Group Chaos</h3>
+    <div class="gallery">
+      <img src="group1.jpg">
+      <img src="group2.jpg">
+    </div>
+
+    <h3>Random Moments</h3>
+    <div class="gallery">
+      <img src="random1.jpg">
+      <img src="random2.jpg">
+    </div>
+  </div>
+
+  <!-- MUSIC -->
+  <div class="card hidden" id="music">
+    <h2>Background Noise 🎵</h2>
+    <p style="text-align:center;">
+      Songs we play loud  
+      and skip equally fast.
+    </p>
+    <div class="spotify">
+      <a href="https://open.spotify.com" target="_blank">Open Playlist</a>
+    </div>
+  </div>
+
+  <footer class="hidden" id="footer">
+    Made for fun. No feelings harmed 😌
+  </footer>
+
+</div>
+
+<script>
+function next(current, nextId) {
+  document.getElementById(current).classList.add('hidden');
+  document.getElementById(nextId).classList.remove('hidden');
+
+  if (nextId === 'final') {
+    document.getElementById('photos').classList.remove('hidden');
+    document.getElementById('music').classList.remove('hidden');
+    document.getElementById('footer').classList.remove('hidden');
+  }
+}
+</script>
+
+</body>
+</html>
